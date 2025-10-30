@@ -820,7 +820,7 @@ export class Scenegraph {
           .getChildAt(row)
           ?.getChildren()
           .forEach((node: INode) => {
-            if (node.name === 'checkbox') {
+            if (node.name === 'checkbox' && !node.attribute?.disabled) {
               if (checked === 'indeterminate') {
                 (node as CheckBox).setAttribute('indeterminate', true);
                 (node as CheckBox).setAttribute('checked', undefined);
@@ -857,7 +857,7 @@ export class Scenegraph {
       const columnGroup = this.getColGroup(col);
       columnGroup?.children?.forEach((cellNode: INode) => {
         cellNode.getChildren().find(node => {
-          if (node.name === 'checkbox') {
+          if (node.name === 'checkbox' && !node.attribute?.disabled) {
             if (checked === 'indeterminate') {
               (node as CheckBox).setAttribute('indeterminate', true);
               (node as CheckBox).setAttribute('checked', undefined);
